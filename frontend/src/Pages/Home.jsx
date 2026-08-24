@@ -7,6 +7,7 @@
 
 
 
+
 import { Link } from 'react-router-dom'
 import DestinationCard from '../components/DestinationCard.jsx'
 import PackageCard from '../components/PackageCard.jsx'
@@ -14,7 +15,7 @@ import TestimonialCard from '../components/TestimonialCard.jsx'
 
 const destinations = [
   {
-    name: 'Maldives',
+    name: 'Maldive',
     country: 'Indian Ocean',
     image: 'https://images.unsplash.com/photo-1514282401047-d79a71a590e8?auto=format&fit=crop&w=800&q=80',
     description: 'Overwater villas, coral reefs, and water so clear it mirrors the sky.',
