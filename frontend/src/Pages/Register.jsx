@@ -1,7 +1,7 @@
 
 function register (){
     return<>
-    <h1>hi</h1>
+    <h1>2</h1>
     </>
 }
 export default register

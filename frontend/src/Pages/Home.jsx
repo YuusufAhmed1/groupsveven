@@ -7,6 +7,7 @@ const steps = [
     title: 'Find an Event',
     description: 'Soo hel munaasabadda ama xafladda aad xiisaynayso.',
     icon: FiSearch,
+  }
 =======
 
 
