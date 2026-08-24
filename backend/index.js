@@ -12,6 +12,7 @@ mongoose.connect("mongodb://localhost:27017/huckzone").then(() => {
 
 app.get("/", (req, res) => {
     res.send("Hello World");
+    
 });
 
 app.listen(2500, () => {
