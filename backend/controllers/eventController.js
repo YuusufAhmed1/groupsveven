@@ -46,9 +46,10 @@ const createEvent = async (req, res, next) => {
       location,
       image,
       organizer: req.user._id,
+      status: 'published',
     });
 
-    return res.status(201).json({ success: true, message: 'Event created as draft', event });
+    return res.status(201).json({ success: true, message: 'Event created and published successfully', event });
   } catch (error) {
     next(error);
   }
