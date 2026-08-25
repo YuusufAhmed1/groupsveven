@@ -1,30 +1,14 @@
-import {FiCalendar,FiCheckCircle,FiCreditCard,FiSearch,FiTag,
-} from 'react-icons/fi'
+import { useEffect, useState } from 'react'
+import { FiCheckCircle, FiCreditCard, FiSearch, FiTag } from 'react-icons/fi'
+import EventGrid from '../components/events/EventGrid.jsx'
+import PageState from '../components/common/PageState.jsx'
+import { getEvents } from '../services/events.js'
 
-<<<<<<< HEAD
 const steps = [
   {
     title: 'Find an Event',
     description: 'Soo hel munaasabadda ama xafladda aad xiisaynayso.',
     icon: FiSearch,
-=======
-
-
-
-import { Link } from 'react-router-dom'
-import DestinationCard from '../components/DestinationCard.jsx'
-import PackageCard from '../components/PackageCard.jsx'
-import TestimonialCard from '../components/TestimonialCard.jsx'
-
-const destinations = [
-  {
-    name: 'Maldive',
-    country: 'Indian Ocean',
-    image: 'https://images.unsplash.com/photo-1514282401047-d79a71a590e8?auto=format&fit=crop&w=800&q=80',
-    description: 'Overwater villas, coral reefs, and water so clear it mirrors the sky.',
-    price: 'From $1,890',
-    rating: '4.9',
->>>>>>> afae431601fb2bf4fd9a2c1a929a0b74ce951c22
   },
   {
     title: 'Choose a Ticket',
@@ -44,31 +28,38 @@ const destinations = [
 ]
 
 function Home() {
+  const [events, setEvents] = useState([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState('')
+
+  useEffect(() => {
+    getEvents().then((data) => setEvents(data.events.slice(0, 3))).catch(() => setError('Munaasabadaha lama soo qaadi karin hadda.')).finally(() => setLoading(false))
+  }, [])
   return (
     <main className="bg-white">
-      <section className="border-b border-gray-200 bg-gray-50">
+      <section className="bg-blue-600">
         <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
           <div className="max-w-3xl">
-            <p className="text-sm font-semibold uppercase tracking-wide text-blue-600">
+            <p className="text-sm font-semibold uppercase tracking-wide text-blue-100">
               Events made simple
             </p>
-            <h1 className="mt-4 text-4xl font-bold leading-tight text-gray-900 sm:text-5xl">
+            <h1 className="mt-4 text-4xl font-bold leading-tight text-white sm:text-5xl">
               Soo hel xafladaha iyo munaasabadaha kuu xiisaha badan.
             </h1>
-            <p className="mt-6 max-w-2xl text-base leading-7 text-gray-600 sm:text-lg">
+            <p className="mt-6 max-w-2xl text-base leading-7 text-blue-100 sm:text-lg">
               Ka raadi munaasabadaha kuu dhow, dooro tigidhka kugu habboon, kuna hel
               tigidhkaaga si fudud oo ammaan ah.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <a
                 href="/events"
-                className="inline-flex items-center justify-center rounded-lg bg-blue-600 px-5 py-3 font-semibold text-white hover:bg-blue-700"
+                className="inline-flex items-center justify-center rounded-lg bg-white px-5 py-3 font-semibold text-blue-600 hover:bg-gray-100"
               >
                 Explore Events
               </a>
               <a
                 href="#how-it-works"
-                className="inline-flex items-center justify-center rounded-lg border border-gray-300 bg-white px-5 py-3 font-semibold text-gray-700 hover:bg-gray-100"
+                className="inline-flex items-center justify-center rounded-lg border border-white px-5 py-3 font-semibold text-white hover:bg-blue-700"
               >
                 Learn More
               </a>
@@ -91,11 +82,7 @@ function Home() {
             </a>
           </div>
 
-          <div className="mt-8 rounded-lg border border-gray-200 bg-white p-8 text-center shadow-sm sm:p-12">
-            <FiCalendar className="mx-auto text-3xl text-gray-400" aria-hidden="true" />
-            <h3 className="mt-4 font-semibold text-gray-900">No featured events</h3>
-            <p className="mt-2 text-gray-600">Dhacdooyin la heli karo ma jiraan hadda.</p>
-          </div>
+          <div className="mt-8">{loading ? <PageState message="Loading events..." /> : error ? <PageState tone="error" message={error} /> : events.length ? <EventGrid events={events} /> : <PageState title="No featured events" message="Dhacdooyin la heli karo ma jiraan hadda." />}</div>
         </div>
       </section>
 
