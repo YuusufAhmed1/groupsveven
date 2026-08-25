@@ -1,11 +1,30 @@
 import {FiCalendar,FiCheckCircle,FiCreditCard,FiSearch,FiTag,
 } from 'react-icons/fi'
 
+<<<<<<< HEAD
 const steps = [
   {
     title: 'Find an Event',
     description: 'Soo hel munaasabadda ama xafladda aad xiisaynayso.',
     icon: FiSearch,
+=======
+
+
+
+import { Link } from 'react-router-dom'
+import DestinationCard from '../components/DestinationCard.jsx'
+import PackageCard from '../components/PackageCard.jsx'
+import TestimonialCard from '../components/TestimonialCard.jsx'
+
+const destinations = [
+  {
+    name: 'Maldive',
+    country: 'Indian Ocean',
+    image: 'https://images.unsplash.com/photo-1514282401047-d79a71a590e8?auto=format&fit=crop&w=800&q=80',
+    description: 'Overwater villas, coral reefs, and water so clear it mirrors the sky.',
+    price: 'From $1,890',
+    rating: '4.9',
+>>>>>>> afae431601fb2bf4fd9a2c1a929a0b74ce951c22
   },
   {
     title: 'Choose a Ticket',
