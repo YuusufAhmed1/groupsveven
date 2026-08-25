@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { getApiError } from '../../services/api.js'
-import { createEvent, createTicketType } from '../../services/events.js'
+import { createEvent, createTicketType, publishEvent } from '../../services/events.js'
 import EventForm from './EventForm.jsx'
 
 function CreateEvent() {
@@ -24,10 +24,11 @@ function CreateEvent() {
     setLoading(true)
     try {
       const result = await createEvent(form)
+      await publishEvent(result.event._id)
       if (hasPartialTicket) {
         await createTicketType({ eventId: result.event._id, name: ticket.name, price: Number(ticket.price), quantity: Number(ticket.quantity) })
       }
-      navigate('/organizer/events', { state: { message: 'Event created successfully.' } })
+      navigate('/organizer/events', { state: { message: 'Event created and published successfully.' } })
     } catch (requestError) {
       setError(getApiError(requestError))
     } finally {

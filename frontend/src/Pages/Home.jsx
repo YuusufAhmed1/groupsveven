@@ -9,6 +9,25 @@ const steps = [
     title: 'Find an Event',
     description: 'Soo hel munaasabadda ama xafladda aad xiisaynayso.',
     icon: FiSearch,
+  }
+
+
+
+
+
+
+
+
+  ]
+
+const destinations = [
+  {
+    name: 'Maldive',
+    country: 'Indian Ocean',
+    image: 'https://images.unsplash.com/photo-1514282401047-d79a71a590e8?auto=format&fit=crop&w=800&q=80',
+    description: 'Overwater villas, coral reefs, and water so clear it mirrors the sky.',
+    price: 'From $1,890',
+    rating: '4.9',
   },
   {
     title: 'Choose a Ticket',
