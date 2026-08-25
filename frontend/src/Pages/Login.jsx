@@ -3,7 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useAuth } from '../context/auth-context.js'
 import { getApiError } from '../services/api.js'
 
-const destinationFor = (role) => ({ user: '/user/dashboard', organizer: '/organizer/dashboard', admin: '/admin/dashboard' })[role] || '/'
+const destinationFor = (role )  =>  ({ user: '/user/dashboard', organizer: '/organizer/dashboard', admin: '/admin/dashboard' })[role] || '/'
 
 function Login() {
   const { login } = useAuth(); const navigate = useNavigate(); const location = useLocation()

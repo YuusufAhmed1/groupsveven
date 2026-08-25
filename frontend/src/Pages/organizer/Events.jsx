@@ -20,7 +20,7 @@ function OrganizerEvents() {
       const data = await getMyEvents()
       setEvents(Array.isArray(data.events) ? data.events : [])
     } catch (requestError) {
-      setError(getApiError(requestError, 'Xogta lama soo heli karin.'))
+      setError(getApiError(requestError, 'Xogta lama soo heli karo.'))
     } finally {
       setLoading(false)
     }

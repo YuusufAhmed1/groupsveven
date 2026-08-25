@@ -17,12 +17,12 @@ const ticketTypeSchema = new mongoose.Schema(
       required: [true, 'Ticket price is required'],
       min: [0, 'Ticket price cannot be negative'],
     },
-    quantity: {
+    quantity : {
       type: Number,
       required: [true, 'Ticket quantity is required'],
       min: [1, 'Ticket quantity must be at least 1'],
     },
-    soldQuantity: {
+    soldQuantity : {
       type: Number,
       default: 0,
       min: 0,
