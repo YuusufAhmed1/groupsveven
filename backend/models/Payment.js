@@ -2,12 +2,12 @@ const mongoose = require('mongoose');
 
 const paymentSchema = new mongoose.Schema(
   {
-    booking: {
+    booking : {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Booking',
       required: true,
     },
-    amount: {
+    amount : {
       type: Number,
       required: true,
       min: 0,
