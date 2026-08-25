@@ -7,12 +7,12 @@ const ticketSchema = new mongoose.Schema(
       required: true,
       unique: true,
     },
-    user: {
+    user : {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'User',
       required: true,
     },
-    event: {
+    event : {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Event',
       required: true,
