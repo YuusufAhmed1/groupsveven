@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { FiCalendar, FiMapPin } from 'react-icons/fi'
+import { FiCalendar, FiMapPin, FiUser } from 'react-icons/fi'
 import { Link } from 'react-router-dom'
 
 const formatDate = (date) => new Intl.DateTimeFormat('en', { dateStyle: 'medium' }).format(new Date(date))
@@ -15,6 +15,7 @@ function EventCard({ event }) {
         <h2 className="mt-1 text-lg font-semibold text-gray-900">{event.title}</h2>
         <p className="mt-2 line-clamp-2 text-sm leading-6 text-gray-600">{event.description}</p>
         <div className="mt-4 space-y-2 text-sm text-gray-600">
+          <p className="flex items-center gap-2"><FiUser className="shrink-0 text-blue-600" /><span>Organized by: <strong className="font-semibold text-gray-900">{event.organizer?.name || 'Organizer'}</strong></span></p>
           <p className="flex items-center gap-2"><FiCalendar /> {formatDate(event.date)} · {event.startTime}</p>
           <p className="flex items-center gap-2"><FiMapPin /> {event.location}</p>
         </div>

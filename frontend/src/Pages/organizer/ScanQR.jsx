@@ -43,7 +43,9 @@ function ScanQR() {
       if (processing.current) return
       await scanner.clear().catch(() => {})
       await checkIn(decodedText)
-    }, () => {})
+    }, (scannerError) => {
+      if (!processing.current) setError({ message: `Camera scanner error: ${scannerError}` })
+    })
     return () => { scanner.clear().catch(() => {}) }
   }, [checkIn, scannerKey])
 
@@ -80,7 +82,7 @@ function ScanQR() {
 
         {result && <section className="mt-6 rounded-lg border border-green-200 bg-green-50 p-6"><h2 className="text-xl font-bold text-green-700">Checked In Successfully</h2><p className="mt-2 text-green-700">{result.message}</p></section>}
         {error && <section className="mt-6 rounded-lg border border-red-200 bg-red-50 p-6"><h2 className="text-xl font-bold text-red-700">{error.status === 'already_used' ? 'Already Used' : error.status === 'invalid' ? 'Invalid QR' : 'Check-in Failed'}</h2><p className="mt-2 text-red-700">{error.message}</p></section>}
-        {ticket && <section className="mt-6 rounded-lg border bg-white p-6 shadow-sm"><h2 className="font-semibold text-gray-900">Attendee Information</h2><dl className="mt-4 grid gap-3 text-sm sm:grid-cols-2"><div><dt className="text-gray-500">Name</dt><dd className="font-medium">{ticket.attendee?.name}</dd></div><div><dt className="text-gray-500">Email</dt><dd className="font-medium">{ticket.attendee?.email}</dd></div><div><dt className="text-gray-500">Event</dt><dd className="font-medium">{ticket.event?.title}</dd></div><div><dt className="text-gray-500">Ticket</dt><dd className="font-medium">{ticket.ticketType}</dd></div></dl></section>}
+        {ticket && <section className="mt-6 rounded-lg border bg-white p-6 shadow-sm"><h2 className="font-semibold text-gray-900">Attendee Information</h2><dl className="mt-4 grid gap-3 text-sm sm:grid-cols-2"><div><dt className="text-gray-500">Name</dt><dd className="font-medium">{ticket.attendee?.name || '-'}</dd></div><div><dt className="text-gray-500">Email</dt><dd className="font-medium">{ticket.attendee?.email || '-'}</dd></div><div><dt className="text-gray-500">Event</dt><dd className="font-medium">{ticket.event?.title || '-'}</dd></div><div><dt className="text-gray-500">Ticket</dt><dd className="font-medium">{ticket.ticketType || '-'}</dd></div><div><dt className="text-gray-500">Date</dt><dd className="font-medium">{ticket.event?.date ? new Date(ticket.event.date).toLocaleDateString() : '-'}</dd></div><div><dt className="text-gray-500">Location</dt><dd className="font-medium">{ticket.event?.location || '-'}</dd></div><div><dt className="text-gray-500">Status</dt><dd className="font-medium capitalize">{ticket.checkedIn ? 'checked_in' : 'valid'}</dd></div><div><dt className="text-gray-500">Ticket ID</dt><dd className="font-medium">{ticket.ticketId || '-'}</dd></div></dl></section>}
       </div>
     </main>
   )
