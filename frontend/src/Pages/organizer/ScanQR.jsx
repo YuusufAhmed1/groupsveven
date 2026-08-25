@@ -61,7 +61,7 @@ function ScanQR() {
   const ticket = result?.ticket || error?.ticket
 
   return (
-    <main className="bg-gray-50 py-15">
+    <main className="bg-gray-50 py-13">
       <div className="mx-auto max-w-2xl px-4">
         <h1 className="text-3xl font-bold text-gray-900">Scan QR</h1>
         <p className="mt-2 text-gray-600">Kaamirada ku akhri QR code-ka tigidhka si loo xaqiijiyo loona check-in gareeyo.</p>
