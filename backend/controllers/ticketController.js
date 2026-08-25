@@ -95,7 +95,7 @@ const verifyTicket = async (req, res, next) => {
       Ticket.findOneAndUpdate(
         { _id: ticket._id, status: 'valid', checkedIn: false },
         { $set: { status: 'checked_in', checkedIn: true, checkedInAt: new Date() } },
-        { new: true }
+        { returnDocument: 'after' }
       )
     );
 

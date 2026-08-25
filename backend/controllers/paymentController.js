@@ -58,7 +58,7 @@ const processDemoPayment = async (req, res, next) => {
     const confirmedBooking = await Booking.findOneAndUpdate(
       { _id: booking._id, user: req.user._id, paymentStatus: 'pending', status: 'pending' },
       { $set: { paymentStatus: 'successful', status: 'confirmed' } },
-      { new: true }
+      { returnDocument: 'after' }
     );
 
     if (!confirmedBooking) {

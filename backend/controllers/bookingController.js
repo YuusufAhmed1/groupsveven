@@ -56,7 +56,7 @@ const createBooking = async (req, res, next) => {
         $expr: { $gte: [{ $subtract: ['$quantity', '$soldQuantity'] }, requestedQuantity] },
       },
       { $inc: { soldQuantity: requestedQuantity } },
-      { new: true }
+      { returnDocument: 'after' }
     );
 
     if (!updatedTicketType) {
