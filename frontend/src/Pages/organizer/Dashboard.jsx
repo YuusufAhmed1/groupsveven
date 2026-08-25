@@ -12,7 +12,7 @@ function OrganizerDashboard() {
   useEffect(() => {
     getOrganizerStats()
       .then((data) => setStats(data.stats))
-      .catch(() => setError('Xogta lama soo heli karin.'))
+      .catch(() => setError('Xogta lama soo heli karo.'))
   }, [])
 
   const cards = stats ? [
